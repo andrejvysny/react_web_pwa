@@ -1,20 +1,9 @@
 name: CI
 
 on:
-  workflow_call:
-    inputs:
-      env:
-        type: string
-        required: true
-        default: staging
-
-  workflow_dispatch:
 
   push:
-    branches-ignore:
-      - main
-  pull_request:
-    branches-ignore:
+    branches:
       - main
 
 jobs:
