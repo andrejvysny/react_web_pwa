@@ -25,7 +25,7 @@ npm run build
 ----
 
 ## Docker
-
+- not configured well, node modules are installed only in container and have to be installed manually on host to index in IDE
 #### Start app
 ```shell
 docker-compose up -d

@@ -47,21 +47,3 @@ registerRoute(
     })
 );
 
-// Cache Images for 30 days
-registerRoute(
-    ({request}) => (request.destination === 'image' && request.url.includes('resized')),
-    new CacheFirst({
-        cacheName: 'app-images',
-        plugins: [
-            new CacheableResponsePlugin({
-                statuses: [0, 200],
-            }),
-            new ExpirationPlugin({
-                maxEntries: 60,
-                maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
-            }),
-        ],
-    }),
-);
-
-
