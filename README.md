@@ -1,31 +1,43 @@
 # REACT PWA TEMPLATE
 
+
 - [React Docs](https://reactjs.org/)
+- [ReactRouter v6](https://reactrouter.com/docs/en/v6)
 - [Workbox Docs](https://developers.google.com/web/tools/workbox)
 - [Webpack Docs](https://webpack.js.org/)
 
-## Instalation
+# Development
 
-```
+## Node
+#### Instalation
+```shell
 npm install
 ```
-
-### Development mode
+#### Development mode
+```shell
+npm start
 ```
-npm run start
-```
-
-
-### Production build
+#### Production build
 Build production version in **./dist** folder.
-```
+```shell
 npm run build
 ```
+----
 
-Build production version in **./dist** folder. And run it at localhost at port **5000**
+## Docker
 
+#### Start app
+```shell
+docker-compose up -d
 ```
-npm run start-prod
+#### Install npm locally for IDE
+```shell
+docker run -v "$PWD":/var/www -w /var/www node:16-alpine npm install
 ```
->port can be edited in package.json
+#### Production build
+```shell
+docker run -v "$PWD":/var/www -w /var/www node:16-alpine npm run build
+```
+
+# Documentation
 

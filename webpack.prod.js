@@ -12,7 +12,7 @@ module.exports = merge(common, {
                 /\.map$/,
                 /\.htaccess$/,
             ],
-            maximumFileSizeToCacheInBytes: 10000000 //TODO: custom max size of ServiceWorker
+            maximumFileSizeToCacheInBytes: 5000000 //TODO: custom max size of ServiceWorker
         })
     ]
 });

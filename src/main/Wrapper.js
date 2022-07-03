@@ -1,16 +1,16 @@
 import React, {useEffect, useRef} from 'react';
 import {ToastContainer, toast} from "react-toastify";
-import {BrowserRouter as Router, Route, Switch, useHistory} from "react-router-dom";
-import {System} from "../core/System";
-import DataProvider from "../core/DataProvider";
+import {BrowserRouter as Router, Route, Routes,} from "react-router-dom";
+import DataProvider from "../core/providers/DataProvider";
 import NotFoundView from "./views/NotFoundView";
 import {notifyUpdatedPWA} from "../core/sw/registerSW";
 import {version} from "../config";
 import {routes} from "./routes";
+import HomeView from "./views/HomeView";
+import {System} from "../core/providers/System";
 
 function Wrapper() {
 
-    const history = useHistory();
     const main_container = useRef();
 
     useEffect(() => {
@@ -31,24 +31,20 @@ function Wrapper() {
                 pauseOnFocusLoss={false}
                 theme={"colored"}
             />
-            <Router basename="/" history={history}>
-                <System main_container={main_container}>
-                    <DataProvider>
-
+            <DataProvider>
+                <Router>
+                    <System>
                         <main role="main" ref={main_container}>
+                            <Routes>
 
-                            <Switch>
-                                <Route exact path={routes.home.path} component={routes.home.component}/>
-                                <Route exact path={routes.login.path} component={routes.login.component}/>
+                                <Route path={routes.home} element={<HomeView />}/>
+                                <Route path="*" element={<NotFoundView />}/>
 
-                                <Route component={NotFoundView}/>
-                            </Switch>
-
+                            </Routes>
                         </main>
-
-                    </DataProvider>
-                </System>
-            </Router>
+                    </System>
+                </Router>
+            </DataProvider>
         </>
     );
 }

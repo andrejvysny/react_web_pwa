@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 
-const DataProviderContext = React.createContext(null);
+export const DataProviderContext = React.createContext(null);
 
 export function useDataProvider() {
     return useContext(DataProviderContext);
@@ -8,7 +8,7 @@ export function useDataProvider() {
 
 function DataProvider({children}) {
 
-    const [data, setData] = useState(null);
+    const [data, setData] = useState();
 
     useEffect(() => {
 
@@ -20,9 +20,9 @@ function DataProvider({children}) {
     };
 
     return (
-        <DataProviderContext.Provider value={DATA}>
-            {children}
-        </DataProviderContext.Provider>
+       <DataProviderContext.Provider value={DATA}>
+           {children}
+       </DataProviderContext.Provider>
     );
 }
 

@@ -27,6 +27,5 @@ module.exports = {
         }
     },
 
-
     version: package_json.version
 };
