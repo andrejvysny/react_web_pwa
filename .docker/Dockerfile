@@ -16,5 +16,5 @@ COPY . .
 RUN npm run build
 
 FROM nginx:alpine AS production
-COPY .docker/nginx.conf /etc/nginx/nginx.conf
+COPY ./.docker/nginx.conf /etc/nginx/nginx.conf
 COPY --from=build-step /build/dist /var/www/html
