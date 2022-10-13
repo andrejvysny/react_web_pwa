@@ -2,10 +2,19 @@ FROM node:16-alpine AS development
 
 ENV NODE_ENV development
 
-RUN mkdir /var/www
-WORKDIR /var/www
+WORKDIR /var/www/html
 COPY package*.json ./
 RUN npm install
 COPY . .
-EXPOSE 3000
-CMD ["npm", "start"]
+
+
+FROM node:16-alpine AS build-step
+WORKDIR /build
+COPY package.json package-lock.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+FROM nginx:alpine AS production
+COPY .docker/nginx.conf /etc/nginx/nginx.conf
+COPY --from=build-step /build/dist /var/www/html
