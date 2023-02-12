@@ -1,4 +1,4 @@
-# REACT PWA TEMPLATE
+# React_Web_PWA
 
 
 - [React Docs](https://reactjs.org/)
@@ -10,16 +10,16 @@
 
 ## Node
 #### Instalation
-```shell
+```bash
 npm install
 ```
 #### Development mode
-```shell
+```bash
 npm start
 ```
 #### Production build
 Build production version in **./dist** folder.
-```shell
+```bash
 npm run build
 ```
 ----
@@ -27,15 +27,15 @@ npm run build
 ## Docker
 - not configured well, node modules are installed only in container and have to be installed manually on host to index in IDE
 #### Start app
-```shell
+```bash
 docker-compose up -d
 ```
 #### Install npm locally for IDE
-```shell
+```bash
 docker run -v "$PWD":/var/www -w /var/www node:16-alpine npm install
 ```
 #### Production build
-```shell
+```bash
 docker run -v "$PWD":/var/www -w /var/www node:16-alpine npm run build
 ```
 
