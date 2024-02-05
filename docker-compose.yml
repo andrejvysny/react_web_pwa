@@ -3,9 +3,14 @@ version: "3.9"
 services:
 
   test:
-    image: reacts
+    image: ghcr.io/andrejvysny/rpwa-template:latest
     ports:
       - 80:80
+
+    environment:
+      - VITE_TITLE=MY_APP_TITLE
+      - VITE_SUB_TITLE=MY_APP_SUB_TITLE
+      - VITE_ENVIRONMENT=MY_APP_ENVIRONMENT
 
 
   app:

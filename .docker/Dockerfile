@@ -26,8 +26,10 @@ COPY --from=build-step /build/dist /var/www/html
 
 ENV NODE_ENV production
 
-COPY ./.docker/configure-runtime.sh /var/www/html/configure-runtime.sh
+#COPY ./.docker/configure-runtime.sh /var/www/html/configure-runtime.sh
+#RUN chmod +x /var/www/html/configure-runtime.sh
+#CMD /bin/bash -c /var/www/html/configure-runtime.sh ; nginx -g 'daemon off;'
 
-RUN chmod +x /var/www/html/configure-runtime.sh
 
-CMD /bin/bash -c /var/www/html/configure-runtime.sh ; nginx -g 'daemon off;'
+COPY ./.docker/env.sh /docker-entrypoint.d/env.sh
+RUN chmod +x /docker-entrypoint.d/env.sh
